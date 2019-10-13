@@ -325,216 +325,263 @@
                 }
             ]
         },
-        "panelbase": {
-            "$id": "#panelbase",
+        "elementbase": {
+            "$id": "#elementbase",
             "type": "object",
+            "discriminator": {
+                "propertyName": "type",
+                "mapping": {
+                    "matrixdropdown": "#/definitions/matrixdropdown",
+                    "matrixdynamic": "#/definitions/matrixdynamic",
+                    "matrix": "#/definitions/matrix",
+                    "checkbox": "#/definitions/checkbox",
+                    "radiogroup": "#/definitions/radiogroup",
+                    "imagepicker": "#/definitions/imagepicker",
+                    "dropdown": "#/definitions/dropdown",
+                    "expression": "#/definitions/expression",
+                    "text": "#/definitions/text",
+                    "multipletext": "#/definitions/multipletext",
+                    "paneldynamic": "#/definitions/paneldynamic",
+                    "html": "#/definitions/html",
+                    "empty": "#/definitions/empty",
+                    "comment": "#/definitions/comment",
+                    "file": "#/definitions/file",
+                    "rating": "#/definitions/rating",
+                    "boolean": "#/definitions/boolean",
+                    "page": "#/definitions/page",
+                    "flowpanel": "#/definitions/flowpanel"
+                }
+            },
             "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "visibleIf": {
-                    "type": "string"
-                },
-                "elements": {
-                    "type": "array",
-                    "items": {
-                        "anyOf": [{
-                                "$ref": "#/definitions/matrixdropdown"
-                            },
-                            {
-                                "$ref": "#/definitions/matrixdynamic"
-                            },
-                            {
-                                "$ref": "#/definitions/matrix"
-                            },
-                            {
-                                "$ref": "#/definitions/checkbox"
-                            },
-                            {
-                                "$ref": "#/definitions/radiogroup"
-                            },
-                            {
-                                "$ref": "#/definitions/imagepicker"
-                            },
-                            {
-                                "$ref": "#/definitions/dropdown"
-                            },
-                            {
-                                "$ref": "#/definitions/expression"
-                            },
-                            {
-                                "$ref": "#/definitions/text"
-                            },
-                            {
-                                "$ref": "#/definitions/multipletext"
-                            },
-                            {
-                                "$ref": "#/definitions/paneldynamic"
-                            },
-                            {
-                                "$ref": "#/definitions/html"
-                            },
-                            {
-                                "$ref": "#/definitions/empty"
-                            },
-                            {
-                                "$ref": "#/definitions/comment"
-                            },
-                            {
-                                "$ref": "#/definitions/file"
-                            },
-                            {
-                                "$ref": "#/definitions/rating"
-                            },
-                            {
-                                "$ref": "#/definitions/boolean"
-                            },
-                            {
-                                "$ref": "#/definitions/page"
-                            },
-                            {
-                                "$ref": "#/definitions/flowpanel"
-                            }
-                        ]
-                    }
-                },
-                "questionTitleLocation": {
-                    "type": "string",
-                    "enum": [
-                        "default",
-                        "top",
-                        "bottom",
-                        "left",
-                        "hidden"
-                    ]
-                },
-                "visible": {
-                    "type": "boolean"
-                },
-                "enableIf": {
+                "type": {
                     "type": "string"
                 }
             }
+        },
+        "panelbase": {
+            "$id": "#panelbase",
+            "type": "object",
+            "allOf": [{
+                "$ref": "#/definitions/elementbase"
+            }, {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "visibleIf": {
+                        "type": "string"
+                    },
+                    "elements": {
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/definitions/matrixdropdown"
+                                },
+                                {
+                                    "$ref": "#/definitions/matrixdynamic"
+                                },
+                                {
+                                    "$ref": "#/definitions/matrix"
+                                },
+                                {
+                                    "$ref": "#/definitions/checkbox"
+                                },
+                                {
+                                    "$ref": "#/definitions/radiogroup"
+                                },
+                                {
+                                    "$ref": "#/definitions/imagepicker"
+                                },
+                                {
+                                    "$ref": "#/definitions/dropdown"
+                                },
+                                {
+                                    "$ref": "#/definitions/expression"
+                                },
+                                {
+                                    "$ref": "#/definitions/text"
+                                },
+                                {
+                                    "$ref": "#/definitions/multipletext"
+                                },
+                                {
+                                    "$ref": "#/definitions/paneldynamic"
+                                },
+                                {
+                                    "$ref": "#/definitions/html"
+                                },
+                                {
+                                    "$ref": "#/definitions/empty"
+                                },
+                                {
+                                    "$ref": "#/definitions/comment"
+                                },
+                                {
+                                    "$ref": "#/definitions/file"
+                                },
+                                {
+                                    "$ref": "#/definitions/rating"
+                                },
+                                {
+                                    "$ref": "#/definitions/boolean"
+                                },
+                                {
+                                    "$ref": "#/definitions/page"
+                                },
+                                {
+                                    "$ref": "#/definitions/flowpanel"
+                                }
+                            ]
+                        }
+                    },
+                    "questionTitleLocation": {
+                        "type": "string",
+                        "enum": [
+                            "default",
+                            "top",
+                            "bottom",
+                            "left",
+                            "hidden"
+                        ]
+                    },
+                    "visible": {
+                        "type": "boolean"
+                    },
+                    "enableIf": {
+                        "type": "string"
+                    }
+                }
+            }]
         },
         "question": {
             "$id": "#question",
             "type": "object",
-            "properties": {
-                "valueName": {
-                    "type": "string"
+            "allOf": [{
+                    "$ref": "#/definitions/elementbase"
                 },
-                "page": {
-                    "$ref": "#/definitions/page"
-                },
-                "visible": {
-                    "type": "boolean"
-                },
-                "useDisplayValuesInTitle": {
-                    "type": "boolean"
-                },
-                "visibleIf": {
-                    "type": "string"
-                },
-                "titleLocation": {
-                    "type": "string",
-                    "enum": [
-                        "default",
-                        "top",
-                        "bottom",
-                        "left",
-                        "hidden"
-                    ]
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "descriptionLocation": {
-                    "type": "string",
-                    "enum": [
-                        "default",
-                        "underInput",
-                        "underTitle"
-                    ]
-                },
-                "requiredErrorText": {
-                    "type": "string"
-                },
-                "startWithNewLine": {
-                    "type": "boolean"
-                },
-                "width": {
-                    "type": "string"
-                },
-                "indent": {
-                    "type": "number",
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ]
-                },
-                "isRequired": {
-                    "type": "boolean"
-                },
-                "requiredIf": {
-                    "type": "string"
-                },
-                "enableIf": {
-                    "type": "string"
-                },
-                "defaultValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "correctAnswer": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "validators": {
-                    "type": "array",
-                    "items": {
-                        "anyOf": [{
-                                "$ref": "#/definitions/numericvalidator"
-                            },
-                            {
-                                "$ref": "#/definitions/textvalidator"
-                            },
-                            {
-                                "$ref": "#/definitions/regexvalidator"
-                            },
-                            {
-                                "$ref": "#/definitions/emailvalidator"
-                            },
-                            {
-                                "$ref": "#/definitions/expressionvalidator"
-                            },
-                            {
-                                "$ref": "#/definitions/answercountvalidator"
+                {
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "valueName": {
+                            "type": "string"
+                        },
+                        "page": {
+                            "$ref": "#/definitions/page"
+                        },
+                        "visible": {
+                            "type": "boolean"
+                        },
+                        "useDisplayValuesInTitle": {
+                            "type": "boolean"
+                        },
+                        "visibleIf": {
+                            "type": "string"
+                        },
+                        "titleLocation": {
+                            "type": "string",
+                            "enum": [
+                                "default",
+                                "top",
+                                "bottom",
+                                "left",
+                                "hidden"
+                            ]
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "descriptionLocation": {
+                            "type": "string",
+                            "enum": [
+                                "default",
+                                "underInput",
+                                "underTitle"
+                            ]
+                        },
+                        "requiredErrorText": {
+                            "type": "string"
+                        },
+                        "startWithNewLine": {
+                            "type": "boolean"
+                        },
+                        "width": {
+                            "type": "string"
+                        },
+                        "indent": {
+                            "type": "number",
+                            "enum": [
+                                0,
+                                1,
+                                2,
+                                3
+                            ]
+                        },
+                        "isRequired": {
+                            "type": "boolean"
+                        },
+                        "requiredIf": {
+                            "type": "string"
+                        },
+                        "enableIf": {
+                            "type": "string"
+                        },
+                        "defaultValue": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        },
+                        "correctAnswer": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        },
+                        "validators": {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [{
+                                        "$ref": "#/definitions/numericvalidator"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/textvalidator"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/regexvalidator"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/emailvalidator"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/expressionvalidator"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/answercountvalidator"
+                                    }
+
+                                ]
                             }
-                            
-                        ]
+                        }
                     }
                 }
-            }
+            ],
+
         },
         "validatorbase": {
             "$id": "#validatorbase",
             "type": "object",
-            "discriminator":{
-                "propertyName":"type",
+            "discriminator": {
+                "propertyName": "type",
                 "mapping": {
                     "numericvalidator": "#/definitions/numericvalidator",
                     "textvalidator": "#/definitions/textvalidator",
@@ -542,8 +589,11 @@
                     "emailvalidator": "#/definitions/emailvalidator",
                     "expressionvalidator": "#/definitions/expressionvalidator",
                     "answercountvalidator": "#/definitions/answercountvalidator"
-                  }
+                }
             },
+            "required": [
+                "type"
+            ],
             "properties": {
                 "type": {
                     "type": "string"
@@ -1017,63 +1067,82 @@
         "checkbox": {
             "$id": "#checkbox",
             "type": "object",
-            "properties": {
-                "noneText": {
-                    "type": "string"
+            "allOf": [{
+                    "$ref": "#/definitions/question"
                 },
-                "selectAllText": {
-                    "type": "string"
-                },
-                "hasSelectAll": {
-                    "type": "boolean"
-                },
-                "hasNone": {
-                    "type": "boolean"
+                {
+                    "properties": {
+                        "noneText": {
+                            "type": "string"
+                        },
+                        "selectAllText": {
+                            "type": "string"
+                        },
+                        "hasSelectAll": {
+                            "type": "boolean"
+                        },
+                        "hasNone": {
+                            "type": "boolean"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "radiogroup": {
             "$id": "#radiogroup",
             "type": "object",
-            "properties": {
-                "showClearButton": {
-                    "type": "boolean"
+            "allOf": [{
+                    "$ref": "#/definitions/question"
+                },
+                {
+                    "properties": {
+                        "showClearButton": {
+                            "type": "boolean"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "imagepicker": {
             "$id": "#imagepicker",
             "type": "object",
-            "properties": {
-                "multiSelect": {
-                    "type": "boolean"
+            "allOf": [{
+                    "$ref": "#/definitions/question"
                 },
-                "showLabel": {
-                    "type": "boolean"
-                },
-                "imageHeight": {
-                    "type": "string"
-                },
-                "imageWidth": {
-                    "type": "string"
-                },
-                "imageFit": {
-                    "type": "string",
-                    "enum": [
-                        "none",
-                        "contain",
-                        "cover",
-                        "fill"
-                    ]
-                },
-                "contentMode": {
-                    "type": "string",
-                    "enum": [
-                        "image",
-                        "video"
-                    ]
+                {
+                    "properties": {
+                        "multiSelect": {
+                            "type": "boolean"
+                        },
+                        "showLabel": {
+                            "type": "boolean"
+                        },
+                        "imageHeight": {
+                            "type": "string"
+                        },
+                        "imageWidth": {
+                            "type": "string"
+                        },
+                        "imageFit": {
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "contain",
+                                "cover",
+                                "fill"
+                            ]
+                        },
+                        "contentMode": {
+                            "type": "string",
+                            "enum": [
+                                "image",
+                                "video"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
+
         },
         "dropdown": {
             "$id": "#dropdown",
@@ -1574,11 +1643,17 @@
         "html": {
             "$id": "#html",
             "type": "object",
-            "properties": {
-                "html": {
-                    "type": "string"
+            "allOf": [{
+                    "$ref": "#/definitions/question"
+                },
+                {
+                    "properties": {
+                        "html": {
+                            "type": "string"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "empty": {
             "$id": "#empty",
