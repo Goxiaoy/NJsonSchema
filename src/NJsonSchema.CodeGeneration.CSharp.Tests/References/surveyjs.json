@@ -881,7 +881,16 @@
                             "type": "string"
                         },
                         "choices": {
-                            "type": "array"
+                            "type": "array",
+                            "items": {
+                                "anyOf": [{
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/itemvalue"
+                                    }
+                                ]
+                            }
                         },
                         "hideIfChoicesEmpty": {
                             "type": "boolean"
@@ -1471,64 +1480,66 @@
                     "properties": {
                         "templateElements": {
                             "type": "array",
-                            "items": [{
-                                    "$ref": "#/definitions/matrixdropdown"
-                                },
-                                {
-                                    "$ref": "#/definitions/matrixdynamic"
-                                },
-                                {
-                                    "$ref": "#/definitions/matrix"
-                                },
-                                {
-                                    "$ref": "#/definitions/checkbox"
-                                },
-                                {
-                                    "$ref": "#/definitions/radiogroup"
-                                },
-                                {
-                                    "$ref": "#/definitions/imagepicker"
-                                },
-                                {
-                                    "$ref": "#/definitions/dropdown"
-                                },
-                                {
-                                    "$ref": "#/definitions/expression"
-                                },
-                                {
-                                    "$ref": "#/definitions/text"
-                                },
-                                {
-                                    "$ref": "#/definitions/multipletext"
-                                },
-                                {
-                                    "$ref": "#/definitions/paneldynamic"
-                                },
-                                {
-                                    "$ref": "#/definitions/html"
-                                },
-                                {
-                                    "$ref": "#/definitions/empty"
-                                },
-                                {
-                                    "$ref": "#/definitions/comment"
-                                },
-                                {
-                                    "$ref": "#/definitions/file"
-                                },
-                                {
-                                    "$ref": "#/definitions/rating"
-                                },
-                                {
-                                    "$ref": "#/definitions/boolean"
-                                },
-                                {
-                                    "$ref": "#/definitions/page"
-                                },
-                                {
-                                    "$ref": "#/definitions/flowpanel"
-                                }
-                            ]
+                            "items": {
+                                "anyOf": [{
+                                        "$ref": "#/definitions/matrixdropdown"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/matrixdynamic"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/matrix"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/checkbox"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/radiogroup"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/imagepicker"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/dropdown"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/expression"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/text"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/multipletext"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/paneldynamic"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/html"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/empty"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/comment"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/file"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/rating"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/boolean"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/page"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/flowpanel"
+                                    }
+                                ]
+                            }
                         },
                         "templateTitle": {
                             "type": "string"
@@ -1857,6 +1868,18 @@
                     }
                 }
             ]
+        },
+        "itemvalue": {
+            "$id": "#itemvalue",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
         }
     }
 }
