@@ -419,14 +419,6 @@
                 }
             }
         },
-        "validatorbase": {
-            "$id": "validatorbase",
-            "properties": {
-                "type": {
-                    "type": "string"
-                }
-            }
-        },
         "question": {
             "$id": "#question",
             "type": "object",
@@ -528,9 +520,33 @@
                             },
                             {
                                 "$ref": "#/definitions/expressionvalidator"
+                            },
+                            {
+                                "$ref": "#/definitions/answercountvalidator"
                             }
+                            
                         ]
                     }
+                }
+            }
+        },
+        "validatorbase": {
+            "$id": "#validatorbase",
+            "type": "object",
+            "discriminator":{
+                "propertyName":"type",
+                "mapping": {
+                    "numericvalidator": "#/definitions/numericvalidator",
+                    "textvalidator": "#/definitions/textvalidator",
+                    "regexvalidator": "#/definitions/regexvalidator",
+                    "emailvalidator": "#/definitions/emailvalidator",
+                    "expressionvalidator": "#/definitions/expressionvalidator",
+                    "answercountvalidator": "#/definitions/answercountvalidator"
+                  }
+            },
+            "properties": {
+                "type": {
+                    "type": "string"
                 }
             }
         },
@@ -538,7 +554,7 @@
             "$id": "#numericvalidator",
             "type": "object",
             "allOf": [{
-                    "ref": "#/definitions/validatorbase"
+                    "$ref": "#/definitions/validatorbase"
                 },
                 {
                     "properties": {
@@ -556,7 +572,7 @@
             "$id": "#textvalidator",
             "type": "object",
             "allOf": [{
-                    "ref": "#/definitions/validatorbase"
+                    "$ref": "#/definitions/validatorbase"
                 },
                 {
                     "properties": {
@@ -573,11 +589,29 @@
                 }
             ]
         },
+        "answercountvalidator": {
+            "$id": "#answercountvalidator",
+            "type": "object",
+            "allOf": [{
+                    "$ref": "#/definitions/validatorbase"
+                },
+                {
+                    "properties": {
+                        "minCount": {
+                            "type": "number"
+                        },
+                        "maxCount": {
+                            "type": "number"
+                        }
+                    }
+                }
+            ]
+        },
         "regexvalidator": {
             "$id": "#regexvalidator",
             "type": "object",
             "allOf": [{
-                    "ref": "#/definitions/validatorbase"
+                    "$ref": "#/definitions/validatorbase"
                 },
                 {
                     "properties": {
@@ -592,14 +626,14 @@
             "$id": "#emailvalidator",
             "type": "object",
             "allOf": [{
-                "ref": "#/definitions/validatorbase"
+                "$ref": "#/definitions/validatorbase"
             }]
         },
         "expressionvalidator": {
             "$id": "#expressionvalidator",
             "type": "object",
             "allOf": [{
-                    "ref": "#/definitions/validatorbase"
+                    "$ref": "#/definitions/validatorbase"
                 },
                 {
                     "properties": {
