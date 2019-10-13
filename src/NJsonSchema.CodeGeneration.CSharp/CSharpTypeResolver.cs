@@ -7,6 +7,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NJsonSchema.CodeGeneration.CSharp
@@ -134,6 +135,12 @@ namespace NJsonSchema.CodeGeneration.CSharp
                 return GetOrGenerateTypeName(schema, typeNameHint) + (isNullable ? "?" : string.Empty);
             }
 
+            if (schema.AnyOf.Count > 0)
+            {
+                //resolve any of, find base class for any of types
+                return ResolveBaseClass(schema.AnyOf.ToList());
+            }
+
             return GetOrGenerateTypeName(schema, typeNameHint);
         }
 
@@ -252,6 +259,25 @@ namespace NJsonSchema.CodeGeneration.CSharp
             var valueType = ResolveDictionaryValueType(schema, "object");
             var keyType = ResolveDictionaryKeyType(schema, "string");
             return string.Format(Settings.DictionaryType + "<{0}, {1}>", keyType, valueType);
+        }
+
+        private string ResolveBaseClass(List<JsonSchema> anyOf)
+        {
+            var matrix = anyOf.Select(p => new[] { p.ActualSchema }.Concat(p.ActualSchema.AllInheritedSchemas).Reverse().ToList()).ToList();
+            var ret = "object";
+            for (int i = 0; i < matrix.Min(p=>p.Count); i++)
+            {
+                var distinct = matrix.Select(p => p[i]).Select(p=>GetOrGenerateTypeName(p, (p as JsonSchemaProperty)?.Name)).Distinct().ToList();
+                if (distinct.Count() == 1)
+                {
+                    ret = distinct.First();
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return ret;
         }
     }
 }
