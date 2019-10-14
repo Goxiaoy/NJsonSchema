@@ -1,0 +1,1107 @@
+﻿{
+    "locale": "zh-cn",
+    "pages": [
+        {
+            "name": "page_FI_caregiver",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "FI_caregiver",
+                    "title": "孩子的主要照料人是：",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "母亲" }
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "父亲" }
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "（外）祖母" }
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "（外）祖父" }
+                        }
+                    ],
+                    "otherText": "其他"
+                }
+            ]
+        },
+        {
+            "name": "page_FI_relationship_father",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "FI_relationship_father_score",
+                    "title": "孩子与父亲之间的关系如何？请按10分打分，1分表示关系非常差，10分表示关系非常好。",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "FI_relationship_father_describe",
+                    "title": "请补充描述孩子与父亲之间的关系："
+                }
+            ]
+        },
+        {
+            "name": "page_FI_relationship_mother",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "FI_relationship_mother_score",
+                    "title": "孩子与母亲之间的关系如何？请按10分打分，1分表示关系非常差，10分表示关系非常好。",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "FI_relationship_mother_describe",
+                    "title": "请补充描述孩子与母亲之间的关系："
+                }
+            ]
+        },
+        {
+            "name": "page_FI_relationship_siblings",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "FI_relationship_sibling_score",
+                    "title": {
+                        "default": "孩子与兄弟姐妹之间的关系如何？请按10分打分，1分表示关系非常差，10分表示关系非常好。",
+                        "zh-cn": "孩子与兄弟姐妹之间的关系如何？请按10分打分，1分表示关系非常差，10分表示关系非常好。如果没有兄弟姐妹，可选择0。"
+                    },
+                    "isRequired": true,
+                    "rateValues": [
+                        {
+                            "value": "0",
+                            "text": {
+                                "default": "无兄弟姐妹",
+                                "zh-cn": "0"
+                            }
+                        },
+                        {
+                            "value": "1",
+                            "text": "1"
+                        },
+                        {
+                            "value": "2",
+                            "text": "2"
+                        },
+                        {
+                            "value": "3",
+                            "text": "3"
+                        },
+                        {
+                            "value": "4",
+                            "text": "4"
+                        },
+                        {
+                            "value": "5",
+                            "text": "5"
+                        },
+                        {
+                            "value": "6",
+                            "text": "6"
+                        },
+                        {
+                            "value": "7",
+                            "text": "7"
+                        },
+                        {
+                            "value": "8",
+                            "text": "8"
+                        },
+                        {
+                            "value": "9",
+                            "text": "9"
+                        },
+                        {
+                            "value": "10",
+                            "text": "10"
+                        }
+                    ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "FI_relationship_sibling_describe",
+                    "visible": false,
+                    "visibleIf": "{FI_relationship_sibling_score} <> \"10\"",
+                    "title": "请补充描述孩子与兄弟姐妹之间的关系："
+                }
+            ]
+        },
+        {
+            "name": "page_FI_relationship_other",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "FI_relationship_others",
+                    "title": { "zh-cn": "是否有其它的家庭成员/亲属，跟孩子关系特别亲密或相处时间较长？" },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "没有"
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "有" }
+                        }
+                    ],
+                    "otherText": "有"
+                }
+            ]
+        },
+        {
+            "name": "page_FI_relationship_other2",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "FI_relationship_others_score",
+                    "visibleIf": "{FI_relationship_others} = \"1\"",
+                    "title": "孩子与这位家庭成员/亲属之间的关系如何？请按10分打分，1分表示关系非常差，10分表示关系非常好。",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "FI_relationship_others_describe",
+                    "visibleIf": "{FI_relationship_others} = \"1\"",
+                    "title": "请补充描述孩子与他/她之间的关系："
+                }
+            ]
+        },
+        {
+            "name": "page_FI_parenting",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "FI_parenting_emotion",
+                    "title": "情感（期望和爱）",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "2",
+                            "text": "会经常向孩子表达对他/她的期望和爱"
+                        },
+                        {
+                            "value": "1",
+                            "text": "有时会表达期望和爱"
+                        },
+                        {
+                            "value": "0",
+                            "text": "几乎不表达"
+                        }
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "FI_parenting_rule",
+                    "title": "标准（规则制定和执行）",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "2",
+                            "text": "高标准严格要求"
+                        },
+                        {
+                            "value": "1",
+                            "text": "设置标准的边界并执行"
+                        },
+                        {
+                            "value": "0",
+                            "text": "无明确的标准"
+                        }
+                    ]
+                }
+            ],
+            "description": "以下哪种描述更符合孩子主要照料人的教养方式？"
+        },
+        {
+            "name": "page_FI_discipline",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "FI_parenting_discipline",
+                    "title": { "zh-cn": "在家会使用何种纪律或家规？（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "面壁思过、罚站" }
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "限制特权" }
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "体罚" }
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "训斥" }
+                        },
+                        {
+                            "value": "4",
+                            "text": { "zh-cn": "讨论问题" }
+                        }
+                    ],
+                    "otherText": "其它方式"
+                }
+            ]
+        },
+        {
+            "name": "page_discipline_effective",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "FI_parenting_discipline_effective",
+                    "title": { "zh-cn": "这些纪律或家规有效吗？请选择你使用过的并且觉得有效的方式。（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "面壁思过、罚站" }
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "限制特权" }
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "体罚" }
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "训斥" }
+                        },
+                        {
+                            "value": "4",
+                            "text": { "zh-cn": "讨论问题" }
+                        }
+                    ],
+                    "otherText": "其它方式"
+                }
+            ]
+        },
+        {
+            "name": "Height/Weight",
+            "elements": [
+                {
+                    "type": "panel",
+                    "name": "panel1",
+                    "elements": [
+                        {
+                            "type": "text",
+                            "name": "CD_Height",
+                            "title": { "zh-cn": "孩子的身高是：（cm）" },
+                            "isRequired": true,
+                            "inputType": "number"
+                        },
+                        {
+                            "type": "text",
+                            "name": "CD_Weight",
+                            "title": { "zh-cn": "孩子的体重是：（kg）" },
+                            "isRequired": true,
+                            "inputType": "number"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_CD_development_concern",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "CD_development_concern",
+                    "title": "您对孩子的成长发展是否有担忧？（若是，请简单描述）",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "否" }
+                        }
+                    ],
+                    "otherText": "是"
+                }
+            ]
+        },
+        {
+            "name": "page_CD_ADHD_diagnose",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "CD_ADHD_diagnose",
+                    "title": "您的孩子之前是否由专业医生诊断过患有儿童注意力缺陷多动障碍(ADHD)/注意力缺失症（ADD）？",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "是" }
+                        },
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "否" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_CD_ADHD_treatment",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "CD_ADHD_treatment",
+                    "visibleIf": "{CD_ADHD_diagnose} = \"1\"",
+                    "title": { "zh-cn": "若曾被确诊过ADHD，采用的治疗方式有：（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "药物治疗" }
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "行为治疗" }
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "瑜伽或冥想" }
+                        },
+                        {
+                            "value": "4",
+                            "text": { "zh-cn": "食疗" }
+                        },
+                        {
+                            "value": "5",
+                            "text": { "zh-cn": "维生素或矿物质补充剂" }
+                        },
+                        {
+                            "value": "6",
+                            "text": { "zh-cn": "中医" }
+                        },
+                        {
+                            "value": "7",
+                            "text": { "zh-cn": "偏方" }
+                        },
+                        {
+                            "value": "8",
+                            "text": { "zh-cn": "必需脂肪酸" }
+                        },
+                        {
+                            "value": "9",
+                            "text": { "zh-cn": "脑电波自我调节训练" }
+                        },
+                        {
+                            "value": "10",
+                            "text": { "zh-cn": "运动" }
+                        },
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "无" }
+                        }
+                    ],
+                    "otherText": "其它方式"
+                }
+            ]
+        },
+        {
+            "name": "page_CD_behavioral_symptom",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "CD_behavioral_symptom",
+                    "title": "在日常生活中，您的孩子是否会出现以下行为：（可多选）",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": "发脾气（超过30分钟）"
+                        },
+                        {
+                            "value": "2",
+                            "text": "伤害自己"
+                        },
+                        {
+                            "value": "3",
+                            "text": "与他人目光接触困难"
+                        },
+                        {
+                            "value": "4",
+                            "text": "孩子对触感、声音、光、温度等过/欠敏感"
+                        },
+                        {
+                            "value": "5",
+                            "text": "不寻常或不切实际的恐惧"
+                        },
+                        {
+                            "value": "6",
+                            "text": "对同龄人/家人有攻击性"
+                        },
+                        {
+                            "value": "7",
+                            "text": "对动物或物品有攻击性"
+                        },
+                        {
+                            "value": "0",
+                            "text": "未曾出现过"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_CD_behavioral",
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "CD_behavioral_help",
+                    "visibleIf": "{CD_behavioral_symptom} notcontains \"0\"",
+                    "title": { "zh-cn": "什么方式有助于解决这些行为问题？" }
+                },
+                {
+                    "type": "text",
+                    "name": "CD_behavioral_worse",
+                    "visibleIf": "{CD_behavioral_symptom} notcontains \"0\"",
+                    "title": { "zh-cn": "什么行为会让情况更糟？" }
+                }
+            ]
+        },
+        {
+            "name": "page_CD_strength",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "CD_strength",
+                    "title": "您的孩子在以下哪些活动中有突出表现：（可多选）",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "没有"
+                        },
+                        {
+                            "value": "1",
+                            "text": "社交能力"
+                        },
+                        {
+                            "value": "2",
+                            "text": "艺术（音乐、绘画、舞蹈等）"
+                        },
+                        {
+                            "value": "3",
+                            "text": "数学，逻辑能力"
+                        },
+                        {
+                            "value": "4",
+                            "text": "文学素养"
+                        },
+                        {
+                            "value": "5",
+                            "text": "身体动觉/运动能力"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_CD_hobby",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "CD_hobby",
+                    "title": { "zh-cn": "孩子喜欢的爱好，活动和游戏有？（除运动之外）（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "没有"
+                        },
+                        {
+                            "value": "1",
+                            "text": "阅读"
+                        },
+                        {
+                            "value": "2",
+                            "text": "电子游戏"
+                        },
+                        {
+                            "value": "3",
+                            "text": "玩具娃娃"
+                        },
+                        {
+                            "value": "4",
+                            "text": "钢琴"
+                        },
+                        {
+                            "value": "5",
+                            "text": "手工/工艺品"
+                        },
+                        {
+                            "value": "6",
+                            "text": "汽车/汽车模型"
+                        },
+                        {
+                            "value": "7",
+                            "text": "计算机"
+                        },
+                        {
+                            "value": "8",
+                            "text": "唱歌"
+                        },
+                        {
+                            "value": "9",
+                            "text": "下棋"
+                        },
+                        {
+                            "value": "10",
+                            "text": "乐高类玩具"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_school_grade",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "SL_school_grade",
+                    "title": "上学情况",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "未上学"
+                        },
+                        {
+                            "value": "1",
+                            "text": "幼儿园"
+                        },
+                        {
+                            "value": "2",
+                            "text": "1年级"
+                        },
+                        {
+                            "value": "3",
+                            "text": "2年级"
+                        },
+                        {
+                            "value": "4",
+                            "text": "3年级"
+                        },
+                        {
+                            "value": "5",
+                            "text": "4年级"
+                        }
+                    ],
+                    "otherText": "其它年级（填写数字）"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_academic_performance",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "SL_academic_performance",
+                    "visibleIf": "{SL_school_grade} <> \"0\" and {SL_school_grade} <> \"1\"",
+                    "title": "孩子的学习成绩在班级中表现如何？",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "4",
+                            "text": "前20%"
+                        },
+                        {
+                            "value": "3",
+                            "text": "20%-40%"
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "40%-60%" }
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "60%-80%" }
+                        },
+                        {
+                            "value": "0",
+                            "text": "后20%"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_SL_academic_performance_sign",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "SL_academic_performance_sign",
+                    "visibleIf": "{SL_school_grade} <> \"0\" and {SL_school_grade} <> \"1\"",
+                    "title": { "zh-cn": "孩子的学习是否存在以下情况？（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": "偏科"
+                        },
+                        {
+                            "value": "2",
+                            "text": "成绩忽上忽下/不稳定"
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "成绩差" }
+                        },
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "无上述情况" }
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_academic_performance_satisfied",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "SL_academic_performance_satisfied",
+                    "visibleIf": "{SL_school_grade} <> \"0\" and {SL_school_grade} <> \"1\"",
+                    "title": "您对孩子成绩的满意程度是？1分为非常不满意，10分为非常满意",
+                    "isRequired": true,
+                    "rateValues": [
+                        {
+                            "value": "0",
+                            "text": "1"
+                        },
+                        {
+                            "value": "1",
+                            "text": "2"
+                        },
+                        {
+                            "value": "2",
+                            "text": "3"
+                        },
+                        {
+                            "value": "3",
+                            "text": "4"
+                        },
+                        {
+                            "value": "4",
+                            "text": "5"
+                        },
+                        {
+                            "value": "5",
+                            "text": "6"
+                        },
+                        {
+                            "value": "6",
+                            "text": "7"
+                        },
+                        {
+                            "value": "7",
+                            "text": "8"
+                        },
+                        {
+                            "value": "8",
+                            "text": "9"
+                        },
+                        {
+                            "value": "9",
+                            "text": "10"
+                        }
+                    ],
+                    "rateMax": 10
+                }
+            ]
+        },
+        {
+            "name": "page_SL_learning_difficulty",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "SL_learning_difficulty",
+                    "visibleIf": "{SL_school_grade} <> \"0\" ",
+                    "title": { "zh-cn": "您的孩子是否出现过以下学习/在校的问题？（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": "学习上的挑战（成绩过差、无法听课等）"
+                        },
+                        {
+                            "value": "2",
+                            "text": "行为问题（不遵守规则、纪律等）"
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "情绪问题（即：分离焦虑、沮丧、孤僻、情绪调节问题等）" }
+                        },
+                        {
+                            "value": "4",
+                            "text": "社交问题（与同伴冲突、难以分享、缺少朋友等）"
+                        },
+                        {
+                            "value": "5",
+                            "text": "暴力行为（即：推、打、踢、咬等）"
+                        },
+                        {
+                            "value": "6",
+                            "text": "发展性问题"
+                        },
+                        {
+                            "value": "7",
+                            "text": "特殊教育学校/班"
+                        },
+                        {
+                            "value": "8",
+                            "text": "被幼儿园、托儿所要求退学"
+                        },
+                        {
+                            "value": "9",
+                            "text": "有被要求退学的危险"
+                        },
+                        {
+                            "value": "0",
+                            "text": "均未曾遭遇过"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_relationship_teacher",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "SL_relationship_teacher_score",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "您怎样形容孩子与老师之间的关系，1分为关系非常差，10分为关系非常好。",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "SL_relationship_teacher_describe",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "请简单描述孩子与老师们之间的关系"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_relationship_classmate",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "SL_relationship_classmate_score",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "您怎样形容孩子与同学之间的关系，1分为关系非常差，10分为关系非常好。",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "SL_relationship_classmate_describe",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "请简单描述孩子与同学之间的关系"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_relationship_school",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "SL_relationship_school_score",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "您的孩子喜欢上学吗？1分为非常讨厌，10分为非常喜欢",
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "SL_relationship_school_describe",
+                    "visibleIf": "{SL_school_grade} <> \"0\"",
+                    "title": "请简单描述孩子对上学的情绪和表现"
+                }
+            ]
+        },
+        {
+            "name": "page_SL_relationship_friend",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "SL_relationship_friend",
+                    "title": { "zh-cn": "孩子有玩得很好的朋友吗？" },
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": { "zh-cn": "没有" }
+                        },
+                        {
+                            "value": "1",
+                            "text": { "zh-cn": "有，比较少" }
+                        },
+                        {
+                            "value": "2",
+                            "text": { "zh-cn": "有，很多" }
+                        },
+                        {
+                            "value": "3",
+                            "text": { "zh-cn": "不清楚" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_HL_if_exercise",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "HL_if_exercise",
+                    "title": { "zh-cn": "孩子会进行运动吗？" },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "不运动"
+                        },
+                        {
+                            "value": "1",
+                            "text": "运动"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_HL_exercise",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "HL_exercise",
+                    "visibleIf": "{HL_if_exercise} = \"1\"",
+                    "title": { "zh-cn": "孩子会进行的运动有：（可多选）" },
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": "游泳"
+                        },
+                        {
+                            "value": "2",
+                            "text": "跑步"
+                        },
+                        {
+                            "value": "3",
+                            "text": "跆拳道"
+                        },
+                        {
+                            "value": "4",
+                            "text": "舞蹈"
+                        },
+                        {
+                            "value": "5",
+                            "text": "球类运动"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        },
+        {
+            "name": "page_HL_exercise_frequency",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "HL_exercise_frequency",
+                    "visibleIf": "{HL_if_exercise} = \"1\"",
+                    "title": "运动的频率通常是：",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "每月1-2次"
+                        },
+                        {
+                            "value": "1",
+                            "text": "每周1-2次"
+                        },
+                        {
+                            "value": "2",
+                            "text": "每周3-4次"
+                        },
+                        {
+                            "value": "3",
+                            "text": "每周超过5次"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_HL_exercise_duration",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "HL_exercise_duration",
+                    "visibleIf": "{HL_if_exercise} = \"1\"",
+                    "title": "每次运动的时长通常是：",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "少于15分钟"
+                        },
+                        {
+                            "value": "1",
+                            "text": "15分钟-30分钟"
+                        },
+                        {
+                            "value": "2",
+                            "text": "30分钟-45分钟"
+                        },
+                        {
+                            "value": "3",
+                            "text": "45分钟-60分钟"
+                        },
+                        {
+                            "value": "4",
+                            "text": "超过60分钟"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "page_HL_sleep_time",
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "HL_sleep_time",
+                    "title": { "zh-cn": "孩子的平均入睡时间：(24小时制)" },
+                    "isRequired": true,
+                    "inputType": "time"
+                },
+                {
+                    "type": "text",
+                    "name": "HL_wakeup_time",
+                    "title": { "zh-cn": "孩子的平均醒来时间：(24小时制)" },
+                    "isRequired": true,
+                    "inputType": "time"
+                }
+            ]
+        },
+        {
+            "name": "page_HL_sleep_situation",
+            "elements": [
+                {
+                    "type": "rating",
+                    "name": "HL_sleep_situation_score",
+                    "title": { "zh-cn": "您怎样形容孩子的睡眠情况？请进行1-10分评分，1分为非常糟糕，10分为非常好" },
+                    "isRequired": true,
+                    "rateValues": [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                    "rateMax": 10
+                },
+                {
+                    "type": "text",
+                    "name": "HL_sleep_situation_describe",
+                    "title": { "zh-cn": "请简要描述孩子的睡眠情况：" }
+                }
+            ]
+        },
+        {
+            "name": "page_HL_food",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "HL_food",
+                    "title": "孩子经常会吃的食物有：（多选）",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "0",
+                            "text": "水果"
+                        },
+                        {
+                            "value": "1",
+                            "text": "蔬菜"
+                        },
+                        {
+                            "value": "2",
+                            "text": "肉类"
+                        },
+                        {
+                            "value": "3",
+                            "text": "鱼/虾"
+                        },
+                        {
+                            "value": "4",
+                            "text": "坚果"
+                        },
+                        {
+                            "value": "5",
+                            "text": "糖果/蛋糕等甜食"
+                        },
+                        {
+                            "value": "6",
+                            "text": "油炸食品"
+                        },
+                        {
+                            "value": "7",
+                            "text": "饮料"
+                        },
+                        {
+                            "value": "8",
+                            "text": "快餐"
+                        },
+                        {
+                            "value": "9",
+                            "text": "零食（薯条，方便面等）"
+                        }
+                    ],
+                    "otherText": "其它"
+                }
+            ]
+        }
+    ],
+    "showCompletedPage": false
+}
