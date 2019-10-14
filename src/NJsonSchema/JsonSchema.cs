@@ -48,7 +48,7 @@ namespace NJsonSchema
         private bool _allowAdditionalItems = true;
         private JsonSchema _additionalItemsSchema = null;
 
-        private bool _allowAdditionalProperties = true;
+        private bool _allowAdditionalProperties = false;
         private JsonSchema _additionalPropertiesSchema = null;
 
         /// <summary>Initializes a new instance of the <see cref="JsonSchema"/> class. </summary>
