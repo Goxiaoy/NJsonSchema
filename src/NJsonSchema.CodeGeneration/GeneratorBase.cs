@@ -72,6 +72,7 @@ namespace NJsonSchema.CodeGeneration
         {
             var processedTypes = new List<string>();
             var types = new Dictionary<string, CodeArtifact>();
+            var allSchema = new JsonSchema();
             while (_resolver.Types.Any(t => !processedTypes.Contains(t.Value)))
             {
                 foreach (var pair in _resolver.Types.ToList())
@@ -79,9 +80,12 @@ namespace NJsonSchema.CodeGeneration
                     processedTypes.Add(pair.Value);
                     var result = GenerateType(pair.Key, pair.Value);
                     types[result.TypeName] = result;
+                    allSchema.Properties[pair.Value]=new JsonSchemaProperty(){Reference = pair.Key};
                 }
             }
-
+            CodeArtifact all=GenerateType(allSchema, "all");
+            //process all
+            types[all.TypeName] = all;
             var artifacts = types.Values
                 .Where(p => !_settings.ExcludedTypeNames.Contains(p.TypeName));
 
