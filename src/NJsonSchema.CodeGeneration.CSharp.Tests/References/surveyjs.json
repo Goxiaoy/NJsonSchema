@@ -12,7 +12,8 @@
         "triggers": {
             "type": "array",
             "items": {
-                "anyOf": [{
+                "anyOf": [
+                    {
                         "$ref": "#/definitions/visibletrigger"
                     },
                     {
@@ -165,7 +166,10 @@
             ]
         },
         "title": {
-            "type": "string"
+            "anyOf": [
+                { "type": "string" },
+                { "$ref": "#/definitions/localizablestring" }
+            ]
         },
         "description": {
             "type": "string"
@@ -297,7 +301,8 @@
         "page": {
             "$id": "#page",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/panelbase"
                 },
                 {
@@ -361,105 +366,110 @@
         "panelbase": {
             "$id": "#panelbase",
             "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/elementbase"
-            }, {
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "visibleIf": {
-                        "type": "string"
-                    },
-                    "elements": {
-                        "type": "array",
-                        "items": {
-                            "anyOf": [{
-                                    "$ref": "#/definitions/matrixdropdown"
-                                },
-                                {
-                                    "$ref": "#/definitions/matrixdynamic"
-                                },
-                                {
-                                    "$ref": "#/definitions/matrix"
-                                },
-                                {
-                                    "$ref": "#/definitions/checkbox"
-                                },
-                                {
-                                    "$ref": "#/definitions/radiogroup"
-                                },
-                                {
-                                    "$ref": "#/definitions/imagepicker"
-                                },
-                                {
-                                    "$ref": "#/definitions/dropdown"
-                                },
-                                {
-                                    "$ref": "#/definitions/expression"
-                                },
-                                {
-                                    "$ref": "#/definitions/text"
-                                },
-                                {
-                                    "$ref": "#/definitions/multipletext"
-                                },
-                                {
-                                    "$ref": "#/definitions/paneldynamic"
-                                },
-                                {
-                                    "$ref": "#/definitions/html"
-                                },
-                                {
-                                    "$ref": "#/definitions/empty"
-                                },
-                                {
-                                    "$ref": "#/definitions/comment"
-                                },
-                                {
-                                    "$ref": "#/definitions/file"
-                                },
-                                {
-                                    "$ref": "#/definitions/rating"
-                                },
-                                {
-                                    "$ref": "#/definitions/boolean"
-                                },
-                                {
-                                    "$ref": "#/definitions/page"
-                                },
-                                {
-                                    "$ref": "#/definitions/flowpanel"
-                                }
+            "allOf": [
+                {
+                    "$ref": "#/definitions/elementbase"
+                },
+                {
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "visibleIf": {
+                            "type": "string"
+                        },
+                        "elements": {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/matrixdropdown"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/matrixdynamic"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/matrix"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/checkbox"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/radiogroup"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/imagepicker"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/dropdown"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/expression"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/text"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/multipletext"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/paneldynamic"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/html"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/empty"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/comment"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/file"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/rating"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/boolean"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/page"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/flowpanel"
+                                    }
+                                ]
+                            }
+                        },
+                        "questionTitleLocation": {
+                            "type": "string",
+                            "enum": [
+                                "default",
+                                "top",
+                                "bottom",
+                                "left",
+                                "hidden"
                             ]
+                        },
+                        "visible": {
+                            "type": "boolean"
+                        },
+                        "enableIf": {
+                            "type": "string"
                         }
-                    },
-                    "questionTitleLocation": {
-                        "type": "string",
-                        "enum": [
-                            "default",
-                            "top",
-                            "bottom",
-                            "left",
-                            "hidden"
-                        ]
-                    },
-                    "visible": {
-                        "type": "boolean"
-                    },
-                    "enableIf": {
-                        "type": "string"
                     }
                 }
-            }]
+            ]
         },
         "question": {
             "$id": "#question",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/elementbase"
                 },
                 {
@@ -493,7 +503,10 @@
                             ]
                         },
                         "title": {
-                            "type": "string"
+                            "anyOf": [
+                                { "$ref": "#/definitions/localizablestring" },
+                                { "type": "string" }
+                            ]
                         },
                         "description": {
                             "type": "string"
@@ -550,7 +563,8 @@
                         "validators": {
                             "type": "array",
                             "items": {
-                                "anyOf": [{
+                                "anyOf": [
+                                    {
                                         "$ref": "#/definitions/numericvalidator"
                                     },
                                     {
@@ -574,7 +588,7 @@
                         }
                     }
                 }
-            ],
+            ]
 
         },
         "validatorbase": {
@@ -603,7 +617,8 @@
         "numericvalidator": {
             "$id": "#numericvalidator",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/validatorbase"
                 },
                 {
@@ -621,7 +636,8 @@
         "textvalidator": {
             "$id": "#textvalidator",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/validatorbase"
                 },
                 {
@@ -642,7 +658,8 @@
         "answercountvalidator": {
             "$id": "#answercountvalidator",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/validatorbase"
                 },
                 {
@@ -660,7 +677,8 @@
         "regexvalidator": {
             "$id": "#regexvalidator",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/validatorbase"
                 },
                 {
@@ -675,14 +693,17 @@
         "emailvalidator": {
             "$id": "#emailvalidator",
             "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/validatorbase"
-            }]
+            "allOf": [
+                {
+                    "$ref": "#/definitions/validatorbase"
+                }
+            ]
         },
         "expressionvalidator": {
             "$id": "#expressionvalidator",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/validatorbase"
                 },
                 {
@@ -697,7 +718,8 @@
         "matrixbase": {
             "$id": "#matrixbase",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -718,7 +740,8 @@
         "matrixdropdownbase": {
             "$id": "#matrixdropdownbase",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/matrixbase"
                 },
                 {
@@ -771,7 +794,8 @@
         "matrixdropdown": {
             "$id": "#matrixdropdown",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/matrixdropdownbase"
                 },
                 {
@@ -786,7 +810,8 @@
         "matrixdynamic": {
             "$id": "#matrixdynamic",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/matrixdropdownbase"
                 },
                 {
@@ -844,7 +869,8 @@
         "matrix": {
             "$id": "#matrix",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/matrixbase"
                 },
                 {
@@ -866,7 +892,8 @@
         "selectbase": {
             "$id": "#selectbase",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -883,7 +910,8 @@
                         "choices": {
                             "type": "array",
                             "items": {
-                                "anyOf": [{
+                                "anyOf": [
+                                    {
                                         "type": "string"
                                     },
                                     {
@@ -1076,7 +1104,8 @@
         "checkbox": {
             "$id": "#checkbox",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1100,7 +1129,8 @@
         "radiogroup": {
             "$id": "#radiogroup",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1115,7 +1145,8 @@
         "imagepicker": {
             "$id": "#imagepicker",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1156,7 +1187,8 @@
         "dropdown": {
             "$id": "#dropdown",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/selectbase"
                 },
                 {
@@ -1183,7 +1215,8 @@
         "expression": {
             "$id": "#expression",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1402,7 +1435,8 @@
         "text": {
             "$id": "#text",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1442,7 +1476,8 @@
         "multipletext": {
             "$id": "#multipletext",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1473,7 +1508,8 @@
         "paneldynamic": {
             "$id": "#paneldynamic",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1481,7 +1517,8 @@
                         "templateElements": {
                             "type": "array",
                             "items": {
-                                "anyOf": [{
+                                "anyOf": [
+                                    {
                                         "$ref": "#/definitions/matrixdropdown"
                                     },
                                     {
@@ -1654,7 +1691,8 @@
         "html": {
             "$id": "#html",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1669,14 +1707,17 @@
         "empty": {
             "$id": "#empty",
             "type": "object",
-            "allOf": [{
-                "$ref": "#/definitions/question"
-            }]
+            "allOf": [
+                {
+                    "$ref": "#/definitions/question"
+                }
+            ]
         },
         "comment": {
             "$id": "#comment",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1700,7 +1741,8 @@
         "file": {
             "$id": "#file",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1739,7 +1781,8 @@
         "rating": {
             "$id": "#rating",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1769,7 +1812,8 @@
         "boolean": {
             "$id": "#boolean",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/question"
                 },
                 {
@@ -1813,7 +1857,8 @@
         "panel": {
             "$id": "#panel",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/panelbase"
                 },
                 {
@@ -1857,7 +1902,8 @@
         "flowpanel": {
             "$id": "#flowpanel",
             "type": "object",
-            "allOf": [{
+            "allOf": [
+                {
                     "$ref": "#/definitions/panel"
                 },
                 {
@@ -1877,9 +1923,19 @@
                     "type": "string"
                 },
                 "text": {
-                    "type": "string"
+                    "anyOf": [
+                        { "type": "string" },
+                        { "$ref": "#/definitions/localizablestring" }
+                    ]
                 }
             }
+        },
+        "localizablestring": {
+            "$id": "#localizablestring",
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            } 
         }
     }
 }
