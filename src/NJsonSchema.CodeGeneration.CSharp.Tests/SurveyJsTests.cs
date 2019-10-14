@@ -35,7 +35,7 @@ namespace NJsonSchema.CodeGeneration.CSharp.Tests
                 ClassStyle = CSharpClassStyle.Poco,
                 SchemaType = SchemaType.Swagger2,
                 DateType = "System.DateTime",
-                Namespace = "Survey"
+                Namespace = "SurveyJs"
             });
             var code = generator.GenerateFile("SurveyJs");
             output.WriteLine(code);
