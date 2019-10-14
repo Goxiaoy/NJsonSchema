@@ -2,7 +2,7 @@
 /// <summary>{{ Description | csharpdocs }}</summary>
 {% endif -%}
 {% if HasDiscriminator -%}
-[Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "{{ Discriminator }}")]
+[Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "{{ Discriminator }}", typeof({{ ClassName }}))]
 {% for derivedClass in DerivedClasses -%}
 [JsonInheritanceAttribute("{{ derivedClass.Discriminator }}", typeof({{ derivedClass.ClassName }}))]
 {% endfor -%}
