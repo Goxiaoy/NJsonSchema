@@ -333,6 +333,7 @@
         "elementbase": {
             "$id": "#elementbase",
             "type": "object",
+            "x-abstract": true,
             "discriminator": {
                 "propertyName": "type",
                 "mapping": {
@@ -354,7 +355,8 @@
                     "rating": "#/definitions/rating",
                     "boolean": "#/definitions/boolean",
                     "page": "#/definitions/page",
-                    "flowpanel": "#/definitions/flowpanel"
+                    "flowpanel": "#/definitions/flowpanel",
+                    "panel": "#/definitions/panel"
                 }
             },
             "properties": {
@@ -468,15 +470,13 @@
         "question": {
             "$id": "#question",
             "type": "object",
+            "x-abstract": true, 
             "allOf": [
                 {
                     "$ref": "#/definitions/elementbase"
                 },
                 {
                     "properties": {
-                        "type": {
-                            "type": "string"
-                        },
                         "valueName": {
                             "type": "string"
                         },
@@ -594,6 +594,7 @@
         "validatorbase": {
             "$id": "#validatorbase",
             "type": "object",
+            "x-abstract": true,
             "discriminator": {
                 "propertyName": "type",
                 "mapping": {
@@ -1131,7 +1132,7 @@
             "type": "object",
             "allOf": [
                 {
-                    "$ref": "#/definitions/question"
+                    "$ref": "#/definitions/selectbase"
                 },
                 {
                     "properties": {
