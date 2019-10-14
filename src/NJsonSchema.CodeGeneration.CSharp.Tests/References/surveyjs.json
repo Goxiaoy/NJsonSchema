@@ -742,6 +742,32 @@
                         },
                         "columnsVisibleIf": {
                             "type": "string"
+                        },
+                        "rows": {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/itemvalue"
+                                    }
+                                ]
+                            }
+                        },
+                        "columns": {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/itemvalue"
+                                    }
+                                ]
+                            }
                         }
                     }
                 }
@@ -792,7 +818,17 @@
                             "type": "boolean"
                         },
                         "choices": {
-                            "type": "array"
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/itemvalue"
+                                    }
+                                ]
+                            }
                         },
                         "optionsCaption": {
                             "type": "string"
@@ -811,7 +847,10 @@
                 {
                     "properties": {
                         "totalText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         }
                     }
                 }
@@ -852,13 +891,22 @@
                             "type": "number"
                         },
                         "confirmDeleteText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "keyDuplicationError": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "addRowText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "addRowLocation": {
                             "type": "string",
@@ -870,7 +918,10 @@
                             ]
                         },
                         "removeRowText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         }
                     }
                 }
@@ -955,7 +1006,10 @@
                             ]
                         },
                         "otherText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "otherPlaceHolder": {
                             "type": "string"
@@ -1116,7 +1170,7 @@
             "type": "object",
             "allOf": [
                 {
-                    "$ref": "#/definitions/question"
+                    "$ref": "#/definitions/selectbase"
                 },
                 {
                     "properties": {
@@ -1124,7 +1178,10 @@
                             "type": "string"
                         },
                         "selectAllText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "hasSelectAll": {
                             "type": "boolean"
@@ -1157,7 +1214,7 @@
             "type": "object",
             "allOf": [
                 {
-                    "$ref": "#/definitions/question"
+                    "$ref": "#/definitions/selectbase"
                 },
                 {
                     "properties": {
@@ -1477,7 +1534,10 @@
                             "type": "number"
                         },
                         "placeHolder": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         }
                     }
                 }
@@ -1589,10 +1649,16 @@
                             }
                         },
                         "templateTitle": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "templateDescription": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "confirmDelete": {
                             "type": "boolean"
@@ -1601,22 +1667,40 @@
                             "type": "string"
                         },
                         "confirmDeleteText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "keyDuplicationError": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "panelPrevText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "panelNextText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "panelAddText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "panelRemoveText": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "panelCount": {
                             "type": "number",
@@ -1708,7 +1792,10 @@
                 {
                     "properties": {
                         "html": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         }
                     }
                 }
@@ -1736,7 +1823,10 @@
                             "type": "number"
                         },
                         "placeHolder": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "rows": {
                             "type": "number"
@@ -1798,7 +1888,17 @@
                 {
                     "properties": {
                         "rateValues": {
-                            "type": "array"
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/itemvalue"
+                                    }
+                                ]
+                            }
                         },
                         "rateMin": {
                             "type": "number"
@@ -1810,10 +1910,16 @@
                             "type": "number"
                         },
                         "minRateDescription": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "maxRateDescription": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         }
                     }
                 }
@@ -1841,7 +1947,10 @@
                             ]
                         },
                         "label": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "showTitle": {
                             "type": "boolean"
@@ -1937,6 +2046,21 @@
                         { "type": "string" },
                         { "$ref": "#/definitions/localizablestring" }
                     ]
+                },
+                "imageLink": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "title": {
+                    "anyOf": [
+                        { "type": "string" },
+                        { "$ref": "#/definitions/localizablestring" }
+                    ]
+                },
+                "isRequired": {
+                    "type": "boolean"
                 }
             }
         },
