@@ -137,6 +137,13 @@ namespace NJsonSchema.CodeGeneration.CSharp
 
             if (schema.AnyOf.Count > 0)
             {
+                var des = string.Join("|", schema.AnyOf.Select(p =>
+                    GetOrGenerateTypeName(p.ActualSchema, (p as JsonSchemaProperty)?.Name)));
+                if (schema.Description==null||!schema.Description.Contains(des))
+                {
+                    schema.Description += "\n" + des + "\n";
+                }
+               
                 //resolve any of, find base class for any of types
                 return ResolveBaseClass(schema.AnyOf.ToList());
             }
