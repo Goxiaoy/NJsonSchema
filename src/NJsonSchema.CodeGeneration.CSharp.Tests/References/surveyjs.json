@@ -172,7 +172,10 @@
             ]
         },
         "description": {
-            "type": "string"
+            "anyOf": [
+                { "type": "string" },
+                { "$ref": "#/definitions/localizablestring" }
+            ]
         },
         "completedHtml": {
             "type": "string"
@@ -378,7 +381,10 @@
                             "type": "string"
                         },
                         "description": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "visibleIf": {
                             "type": "string"
@@ -509,7 +515,10 @@
                             ]
                         },
                         "description": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "descriptionLocation": {
                             "type": "string",
