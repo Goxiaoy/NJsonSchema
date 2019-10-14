@@ -74,7 +74,6 @@ internal class JsonInheritanceConverter : Newtonsoft.Json.JsonConverter
             return null;
         if (objectType != _baseType)
         {
-            serializer.ContractResolver.ResolveContract(objectType).Converter = null;
             try
             {
                 _isReading = true;
