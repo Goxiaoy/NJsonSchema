@@ -21,6 +21,9 @@ namespace NJsonSchema.CodeGeneration
         TypeScript,
 
         /// <summary>Html.</summary>
-        Html
+        Html,
+
+        /// <summary>Dart.</summary>
+        Dart
     }
 }
