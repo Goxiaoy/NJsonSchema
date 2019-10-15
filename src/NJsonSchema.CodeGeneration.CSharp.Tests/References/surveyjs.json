@@ -376,6 +376,7 @@
                     "$ref": "#/definitions/elementbase"
                 },
                 {
+                    "x-abstract": true,
                     "properties": {
                         "title": {
                             "type": "string"
@@ -476,12 +477,12 @@
         "question": {
             "$id": "#question",
             "type": "object",
-            "x-abstract": true, 
             "allOf": [
                 {
                     "$ref": "#/definitions/elementbase"
                 },
                 {
+                    "x-abstract": true,
                     "properties": {
                         "valueName": {
                             "type": "string"
@@ -733,6 +734,7 @@
                     "$ref": "#/definitions/question"
                 },
                 {
+                    "x-abstract": true,
                     "properties": {
                         "showHeader": {
                             "type": "boolean"
@@ -781,6 +783,7 @@
                     "$ref": "#/definitions/matrixbase"
                 },
                 {
+                    "x-abstract": true, 
                     "properties": {
                         "columnLayout": {
                             "type": "string",
@@ -958,6 +961,7 @@
                     "$ref": "#/definitions/question"
                 },
                 {
+                    "x-abstract": true,
                     "properties": {
                         "choicesByUrl": {
                             "$ref": "#/definitions/choicesByUrl"
