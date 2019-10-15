@@ -1,25 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;net451</TargetFrameworks>
-    <Description>JSON Schema reader, generator and validator for .NET</Description>
-    <Version>10.0.27</Version>
-    <PackageTags>json schema validation generator .net</PackageTags>
-    <Copyright>Copyright © Rico Suter, 2018</Copyright>
-    <PackageLicenseUrl>https://github.com/RicoSuter/NJsonSchema/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>http://NJsonSchema.org</PackageProjectUrl>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>../NJsonSchema.snk</AssemblyOriginatorKeyFile>
-    <PackageIconUrl />
-    <Authors>Rico Suter</Authors>
-    <PackageIconUrl>https://raw.githubusercontent.com/RSuter/NJsonSchema/master/assets/NuGetIcon.png</PackageIconUrl>
-    <Company />
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-  </PropertyGroup>
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
+
+  <Import Project="..\common.props" />
+
   <ItemGroup>
     <EmbeddedResource Include="Templates\Class.liquid" />
     <EmbeddedResource Include="Templates\ConvertToClass.liquid" />

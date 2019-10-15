@@ -1,26 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;net451</TargetFrameworks>
-    <Description>JSON Schema reader, generator and validator for .NET</Description>
-    <Version>10.0.27</Version>
-    <PackageTags>json schema validation generator .net</PackageTags>
-    <Copyright>Copyright © Rico Suter, 2018</Copyright>
-    <PackageLicenseUrl>https://github.com/rsuter/NJsonSchema/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>http://NJsonSchema.org</PackageProjectUrl>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>../NJsonSchema.snk</AssemblyOriginatorKeyFile>
-    <Authors>Rico Suter</Authors>
-    <PackageIconUrl>https://raw.githubusercontent.com/RSuter/NJsonSchema/master/assets/NuGetIcon.png</PackageIconUrl>
-    <Company />
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.3|AnyCPU'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-  </PropertyGroup>
+
+  <Import Project="..\common.props" />
+
   <ItemGroup>
     <None Remove="Templates\Class.Body.liquid" />
     <None Remove="Templates\Class.Constructor.Record.liquid" />
