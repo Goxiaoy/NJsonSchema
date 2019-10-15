@@ -19,9 +19,6 @@ namespace NJsonSchema.CodeGeneration.Dart
         /// <summary>Generates classes With ChangeNotifier</summary>
         Inpc,
 
-        /// <summary>Generates classes implementing the Prism base class.</summary>
-        Prism,
-
         /// <summary>Generates Records - like read only POCOs.</summary>
         Record
     }

@@ -37,7 +37,7 @@ namespace NJsonSchema.CodeGeneration.Dart
             GenerateDataAnnotations = false;
             IsPrivate = false;
             PropertySetterAccessModifier = string.Empty;
-            GenerateJsonMethods = false;
+            GenerateJsonMethods = true;
             EnforceFlagEnums = false;
 
             ValueGenerator = new DartValueGenerator(this);

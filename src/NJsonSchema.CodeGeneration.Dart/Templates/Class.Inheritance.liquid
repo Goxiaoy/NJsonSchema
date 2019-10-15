@@ -1,7 +1,5 @@
 ﻿{% if RenderInpc -%}
-{% if HasInheritance %}: {{ BaseClassName }}, System.ComponentModel.INotifyPropertyChanged{% else %}: System.ComponentModel.INotifyPropertyChanged{% endif %}
-{% elsif RenderPrism -%}
-{% if HasInheritance %}: {{ BaseClassName }}{% else %}: Prism.Mvvm.BindableBase{% endif %}
+{% if HasInheritance %} extends {{ BaseClassName }} with ChangeNotifier{% else %}with ChangeNotifier{% endif %}
 {% else -%}
-{% if HasInheritance %}: {{ BaseClassName }}{% endif %}
+{% if HasInheritance %} extends {{ BaseClassName }}{% endif %}
 {% endif -%}

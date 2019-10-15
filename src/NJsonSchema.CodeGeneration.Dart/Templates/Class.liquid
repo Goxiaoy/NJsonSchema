@@ -1,14 +1,6 @@
 ﻿{% if HasDescription -%}
 /// {{ Description | csharpdocs }}
 {% endif -%}
-{% if HasDiscriminator -%}
-[Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "{{ Discriminator }}")]
-{% for derivedClass in DerivedClasses -%}
-{% if derivedClass.IsAbstract != true -%}
-[JsonInheritanceAttribute("{{ derivedClass.Discriminator }}", typeof({{ derivedClass.ClassName }}))]
-{% endif -%}
-{% endfor -%}
-{% endif -%}
 {% template Class.Annotations %}
 {% if IsAbstract %}abstract{% endif %} class {{ TypeAccessModifier }}{{ClassName}} {% template Class.Inheritance %}
 {
@@ -57,14 +49,7 @@
 
 {% endfor -%}
 {% if HasAdditionalPropertiesType -%}
-    private System.Collections.Generic.IDictionary<string, {{ AdditionalPropertiesType }}> _additionalProperties = new System.Collections.Generic.Dictionary<string, {{ AdditionalPropertiesType }}>();
-
-    [Newtonsoft.Json.JsonExtensionData]
-    public System.Collections.Generic.IDictionary<string, {{ AdditionalPropertiesType }}> AdditionalProperties
-    {
-        get { return _additionalProperties; }
-        {{PropertySetterAccessModifier}}set { _additionalProperties = value; }
-    }
+    dynamic additionalProperties;
 
 {% endif -%}
 {% if GenerateJsonMethods -%}

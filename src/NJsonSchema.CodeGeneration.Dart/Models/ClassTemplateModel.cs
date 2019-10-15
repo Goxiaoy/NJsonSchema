@@ -90,8 +90,6 @@ namespace NJsonSchema.CodeGeneration.Dart.Models
         /// <summary>Gets a value indicating whether the class style is INPC.</summary>
         public bool RenderInpc => _settings.ClassStyle == DartClassStyle.Inpc;
 
-        /// <summary>Gets a value indicating whether the class style is Prism.</summary>
-        public bool RenderPrism => _settings.ClassStyle == DartClassStyle.Prism;
 
         /// <summary>Gets a value indicating whether the class style is Record.</summary>
         public bool RenderRecord => _settings.ClassStyle == DartClassStyle.Record;
