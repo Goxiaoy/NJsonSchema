@@ -8,7 +8,7 @@
 
 namespace NJsonSchema.CodeGeneration.Dart
 {
-    /// <summary>Generates the property name for a given CSharp <see cref="JsonSchemaProperty"/>.</summary>
+    /// <summary>Generates the property name for a given Dart <see cref="JsonSchemaProperty"/>.</summary>
     public class DartPropertyNameGenerator : IPropertyNameGenerator
     {
         /// <summary>Generates the property name.</summary>

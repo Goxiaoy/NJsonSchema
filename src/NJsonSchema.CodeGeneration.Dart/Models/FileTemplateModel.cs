@@ -8,7 +8,7 @@
 
 namespace NJsonSchema.CodeGeneration.Dart.Models
 {
-    /// <summary>The CSharp file template model.</summary>
+    /// <summary>The Dart file template model.</summary>
     public class FileTemplateModel
     {
         /// <summary>Gets or sets the namespace.</summary>

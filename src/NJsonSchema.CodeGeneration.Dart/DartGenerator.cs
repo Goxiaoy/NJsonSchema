@@ -13,7 +13,7 @@ using NJsonSchema.CodeGeneration.Models;
 
 namespace NJsonSchema.CodeGeneration.Dart
 {
-    /// <summary>The CSharp code generator.</summary>
+    /// <summary>The Dart code generator.</summary>
     public class DartGenerator : GeneratorBase
     {
         private readonly DartTypeResolver _resolver;
@@ -48,39 +48,6 @@ namespace NJsonSchema.CodeGeneration.Dart
         public DartGeneratorSettings Settings { get; }
 
         /// <inheritdoc />
-        public override IEnumerable<CodeArtifact> GenerateTypes()
-        {
-            var baseArtifacts = base.GenerateTypes();
-            var artifacts = new List<CodeArtifact>();
-
-            if (baseArtifacts.Any(r => r.Code.Contains("JsonInheritanceConverter")))
-            {
-                if (Settings.ExcludedTypeNames?.Contains("JsonInheritanceAttribute") != true)
-                {
-                    var template = Settings.TemplateFactory.CreateTemplate("CSharp", "JsonInheritanceAttribute", new TemplateModelBase());
-                    artifacts.Add(new CodeArtifact("JsonInheritanceAttribute", CodeArtifactType.Class, CodeArtifactLanguage.CSharp, CodeArtifactCategory.Utility, template));
-                }
-
-                if (Settings.ExcludedTypeNames?.Contains("JsonInheritanceConverter") != true)
-                {
-                    var template = Settings.TemplateFactory.CreateTemplate("CSharp", "JsonInheritanceConverter", new TemplateModelBase());
-                    artifacts.Add(new CodeArtifact("JsonInheritanceConverter", CodeArtifactType.Class, CodeArtifactLanguage.CSharp, CodeArtifactCategory.Utility, template));
-                }
-            }
-
-            if (baseArtifacts.Any(r => r.Code.Contains("DateFormatConverter")))
-            {
-                if (Settings.ExcludedTypeNames?.Contains("DateFormatConverter") != true)
-                {
-                    var template = Settings.TemplateFactory.CreateTemplate("CSharp", "DateFormatConverter", new TemplateModelBase());
-                    artifacts.Add(new CodeArtifact("DateFormatConverter", CodeArtifactType.Class, CodeArtifactLanguage.CSharp, CodeArtifactCategory.Utility, template));
-                }
-            }
-
-            return baseArtifacts.Concat(artifacts);
-        }
-
-        /// <inheritdoc />
         protected override string GenerateFile(IEnumerable<CodeArtifact> artifactCollection)
         {
             var model = new FileTemplateModel
@@ -89,7 +56,7 @@ namespace NJsonSchema.CodeGeneration.Dart
                 TypesCode = artifactCollection.Concatenate()
             };
 
-            var template = Settings.TemplateFactory.CreateTemplate("CSharp", "File", model);
+            var template = Settings.TemplateFactory.CreateTemplate("Dart", "File", model);
             return ConversionUtilities.TrimWhiteSpaces(template.Render());
         }
 
@@ -117,8 +84,8 @@ namespace NJsonSchema.CodeGeneration.Dart
 
             RenamePropertyWithSameNameAsClass(typeName, model.Properties);
 
-            var template = Settings.TemplateFactory.CreateTemplate("CSharp", "Class", model);
-            return new CodeArtifact(typeName, model.BaseClassName, CodeArtifactType.Class, CodeArtifactLanguage.CSharp, CodeArtifactCategory.Contract, template);
+            var template = Settings.TemplateFactory.CreateTemplate("Dart", "Class", model);
+            return new CodeArtifact(typeName, model.BaseClassName, CodeArtifactType.Class, CodeArtifactLanguage.Dart, CodeArtifactCategory.Contract, template);
         }
 
         private void RenamePropertyWithSameNameAsClass(string typeName, IEnumerable<PropertyModel> properties)
@@ -139,8 +106,8 @@ namespace NJsonSchema.CodeGeneration.Dart
         private CodeArtifact GenerateEnum(JsonSchema schema, string typeName)
         {
             var model = new EnumTemplateModel(typeName, schema, Settings);
-            var template = Settings.TemplateFactory.CreateTemplate("CSharp", "Enum", model);
-            return new CodeArtifact(typeName, CodeArtifactType.Enum, CodeArtifactLanguage.CSharp, CodeArtifactCategory.Contract, template);
+            var template = Settings.TemplateFactory.CreateTemplate("Dart", "Enum", model);
+            return new CodeArtifact(typeName, CodeArtifactType.Enum, CodeArtifactLanguage.Dart, CodeArtifactCategory.Contract, template);
         }
     }
 }

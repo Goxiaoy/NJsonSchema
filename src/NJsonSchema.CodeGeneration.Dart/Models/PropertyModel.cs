@@ -11,7 +11,7 @@ using NJsonSchema.CodeGeneration.Models;
 
 namespace NJsonSchema.CodeGeneration.Dart.Models
 {
-    /// <summary>The CSharp property template model.</summary>
+    /// <summary>The Dart property template model.</summary>
     public class PropertyModel : PropertyModelBase
     {
         private readonly JsonSchemaProperty _property;

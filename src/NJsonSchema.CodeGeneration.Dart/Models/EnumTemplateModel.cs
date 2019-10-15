@@ -12,9 +12,9 @@ using NJsonSchema.CodeGeneration.Models;
 
 namespace NJsonSchema.CodeGeneration.Dart.Models
 {
-    // TODO: Add base class for CSharp.EnumTemplateModel and TypeScript.EnumTemplateModel
+    // TODO: Add base class for Dart.EnumTemplateModel and TypeScript.EnumTemplateModel
 
-    /// <summary>The CSharp enum template model.</summary>
+    /// <summary>The Dart enum template model.</summary>
     public class EnumTemplateModel : TemplateModelBase
     {
         private readonly JsonSchema _schema;
@@ -44,7 +44,7 @@ namespace NJsonSchema.CodeGeneration.Dart.Models
         public bool IsStringEnum => _schema.Type != JsonObjectType.Integer;
 
         /// <summary>Gets or sets the access modifier of generated classes and interfaces.</summary>
-        public string TypeAccessModifier => _settings.TypeAccessModifier;
+        public string TypeAccessModifier => _settings.IsPrivate ? "_" : string.Empty;
 
         /// <summary>Gets or sets if we output as Bit Flags.</summary>
         public bool IsEnumAsBitFlags => _settings.EnforceFlagEnums || _schema.IsFlagEnumerable;

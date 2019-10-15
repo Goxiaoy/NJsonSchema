@@ -12,7 +12,7 @@ using NJsonSchema.CodeGeneration.Models;
 
 namespace NJsonSchema.CodeGeneration.Dart.Models
 {
-    /// <summary>The CSharp class template model.</summary>
+    /// <summary>The Dart class template model.</summary>
     public class ClassTemplateModel : ClassTemplateModelBase
     {
         private readonly DartTypeResolver _resolver;
@@ -128,11 +128,9 @@ namespace NJsonSchema.CodeGeneration.Dart.Models
         public bool InheritsExceptionSchema => _resolver.ExceptionSchema != null &&
                                                _schema?.InheritsSchema(_resolver.ExceptionSchema) == true;
 
-        /// <summary>Gets a value indicating whether to use the DateFormatConverter.</summary>
-        public bool UseDateFormatConverter => _settings.DateType.StartsWith("System.Date");
 
         /// <summary>Gets or sets the access modifier of generated classes and interfaces.</summary>
-        public string TypeAccessModifier => _settings.TypeAccessModifier;
+        public string TypeAccessModifier => _settings.IsPrivate ? "_" : string.Empty;
 
         /// <summary>Gets the access modifier of property setters (default: '').</summary>
         public string PropertySetterAccessModifier => !string.IsNullOrEmpty(_settings.PropertySetterAccessModifier) ? _settings.PropertySetterAccessModifier + " " : "";

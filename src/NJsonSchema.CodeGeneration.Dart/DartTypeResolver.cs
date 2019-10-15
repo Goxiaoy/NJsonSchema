@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace NJsonSchema.CodeGeneration.Dart
 {
-    /// <summary>Manages the generated types and converts JSON types to CSharp types. </summary>
+    /// <summary>Manages the generated types and converts JSON types to Dart types. </summary>
     public class DartTypeResolver : TypeResolverBase
     {
         /// <summary>Initializes a new instance of the <see cref="DartTypeResolver"/> class.</summary>
@@ -64,7 +64,7 @@ namespace NJsonSchema.CodeGeneration.Dart
 
             if (schema == ExceptionSchema)
             {
-                return "System.Exception";
+                return "Error";
             }
 
             // Primitive schemas (no new type)
@@ -99,22 +99,22 @@ namespace NJsonSchema.CodeGeneration.Dart
 
             if (type.HasFlag(JsonObjectType.Integer) && !schema.ActualTypeSchema.IsEnumeration)
             {
-                return ResolveInteger(schema.ActualTypeSchema, isNullable, typeNameHint);
+                return ResolveInteger(schema.ActualTypeSchema, typeNameHint);
             }
 
             if (type.HasFlag(JsonObjectType.Boolean))
             {
-                return ResolveBoolean(isNullable);
+                return "bool";
             }
 
             if (schema.IsBinary)
             {
-                return "byte[]";
+                return "ByteBuffer";
             }
 
             if (type.HasFlag(JsonObjectType.String) && !schema.ActualTypeSchema.IsEnumeration)
             {
-                return ResolveString(schema.ActualTypeSchema, isNullable, typeNameHint);
+                return ResolveString(schema.ActualTypeSchema, typeNameHint);
             }
 
             // Type generating schemas
@@ -131,7 +131,7 @@ namespace NJsonSchema.CodeGeneration.Dart
 
             if (schema.ActualTypeSchema.IsEnumeration)
             {
-                return GetOrGenerateTypeName(schema, typeNameHint) + (isNullable ? "?" : string.Empty);
+                return GetOrGenerateTypeName(schema, typeNameHint);
             }
 
             return GetOrGenerateTypeName(schema, typeNameHint);
@@ -152,78 +152,64 @@ namespace NJsonSchema.CodeGeneration.Dart
             return base.IsDefinitionTypeSchema(schema);
         }
 
-        private string ResolveString(JsonSchema schema, bool isNullable, string typeNameHint)
+        private string ResolveString(JsonSchema schema, string typeNameHint)
         {
             if (schema.Format == JsonFormatStrings.Date)
             {
-                return isNullable && Settings.DateType?.ToLowerInvariant() != "string" ? Settings.DateType + "?" : Settings.DateType;
+                return Settings.DateTimeType;
             }
 
             if (schema.Format == JsonFormatStrings.DateTime)
             {
-                return isNullable && Settings.DateTimeType?.ToLowerInvariant() != "string" ? Settings.DateTimeType + "?" : Settings.DateTimeType;
+                return Settings.DateTimeType;
             }
 
             if (schema.Format == JsonFormatStrings.Time)
             {
-                return isNullable && Settings.TimeType?.ToLowerInvariant() != "string" ? Settings.TimeType + "?" : Settings.TimeType;
+                return Settings.DurationType;
             }
 
             if (schema.Format == JsonFormatStrings.TimeSpan)
             {
-                return isNullable && Settings.TimeSpanType?.ToLowerInvariant() != "string" ? Settings.TimeSpanType + "?" : Settings.TimeSpanType;
+                return Settings.DurationType;
             }
 
             if (schema.Format == JsonFormatStrings.Uri)
             {
-                return "System.Uri";
+                return "Uri";
             }
 
 #pragma warning disable 618 // used to resolve type from schemas generated with previous version of the library
 
             if (schema.Format == JsonFormatStrings.Guid || schema.Format == JsonFormatStrings.Uuid)
             {
-                return isNullable ? "System.Guid?" : "System.Guid";
+                return Settings.GuidType;
             }
 
             if (schema.Format == JsonFormatStrings.Base64 || schema.Format == JsonFormatStrings.Byte)
             {
-                return "byte[]";
+                return "ByteBuffer";
             }
 
 #pragma warning restore 618
 
-            return "string";
+            return "String";
         }
 
-        private static string ResolveBoolean(bool isNullable)
-        {
-            return isNullable ? "bool?" : "bool";
-        }
 
-        private string ResolveInteger(JsonSchema schema, bool isNullable, string typeNameHint)
+        private string ResolveInteger(JsonSchema schema, string typeNameHint)
         {
             if (schema.Format == JsonFormatStrings.Byte)
             {
-                return isNullable ? "byte?" : "byte";
+                //TODO Byte
+                return "int";
             }
-
-            if (schema.Format == JsonFormatStrings.Long || schema.Format == "long")
-            {
-                return isNullable ? "long?" : "long";
-            }
-
-            return isNullable ? "int?" : "int";
+            return "int";
         }
 
         private static string ResolveNumber(JsonSchema schema, bool isNullable)
         {
-            if (schema.Format == JsonFormatStrings.Decimal)
-            {
-                return isNullable ? "decimal?" : "decimal";
-            }
-
-            return isNullable ? "double?" : "double";
+            return "double";
         }
 
         private string ResolveArrayOrTuple(JsonSchema schema)
@@ -240,17 +226,18 @@ namespace NJsonSchema.CodeGeneration.Dart
                 var tupleTypes = schema.Items
                     .Select(i => Resolve(i, i.IsNullable(Settings.SchemaType), null))
                     .ToArray();
-
-                return string.Format("System.Tuple<" + string.Join(", ", tupleTypes) + ">");
+                //TODO Tuple
+                return "Object";
+                //return string.Format("System.Tuple<" + string.Join(", ", tupleTypes) + ">");
             }
 
-            return Settings.ArrayType + "<object>";
+            return Settings.ArrayType + "<Object>";
         }
 
         private string ResolveDictionary(JsonSchema schema)
         {
-            var valueType = ResolveDictionaryValueType(schema, "object");
-            var keyType = ResolveDictionaryKeyType(schema, "string");
+            var valueType = ResolveDictionaryValueType(schema, "Object");
+            var keyType = ResolveDictionaryKeyType(schema, "String");
             return string.Format(Settings.DictionaryType + "<{0}, {1}>", keyType, valueType);
         }
     }

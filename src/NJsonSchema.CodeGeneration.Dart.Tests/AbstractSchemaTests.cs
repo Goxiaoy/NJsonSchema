@@ -18,9 +18,8 @@ namespace NJsonSchema.CodeGeneration.Tests.CSharp.Generation
             var schema = JsonSchema.FromType<AbstractClass>();
 
             // Act
-            var generator = new DartGenerator(schema, new DartGeneratorSettings());
+            var generator = new DartGenerator(schema, new DartGeneratorSettings(){GenerateDataAnnotations = false});
             var code = generator.GenerateFile("AbstractClass");
-
             // Assert
             Assert.Contains("abstract class AbstractClass", code);
         }

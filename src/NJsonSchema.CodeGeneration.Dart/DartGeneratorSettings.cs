@@ -19,10 +19,9 @@ namespace NJsonSchema.CodeGeneration.Dart
             AnyType = "Object";
             Library = "MyLibrary";
 
-            DateType = "DateTime";
             DateTimeType = "DateTime";
-            TimeType = "Duration";
-            TimeSpanType = "Duration";
+
+            DurationType = "Duration";
 
             ArrayType = "List";
             ArrayInstanceType = "List";
@@ -36,7 +35,7 @@ namespace NJsonSchema.CodeGeneration.Dart
 
             RequiredPropertiesMustBeDefined = true;
             GenerateDataAnnotations = false;
-            TypeAccessModifier = "";
+            IsPrivate = false;
             PropertySetterAccessModifier = string.Empty;
             GenerateJsonMethods = false;
             EnforceFlagEnums = false;
@@ -51,6 +50,7 @@ namespace NJsonSchema.CodeGeneration.Dart
             InlineNamedArrays = false;
             InlineNamedTuples = false;
             InlineNamedDictionaries = false;
+            GuidType = "String";
         }
 
         /// <summary>Gets or sets the Dart library of the generated types (default: MyLibrary).</summary>
@@ -66,17 +66,16 @@ namespace NJsonSchema.CodeGeneration.Dart
         /// <summary>Gets or sets the any type (default: "object").</summary>
         public string AnyType { get; set; }
 
-        /// <summary>Gets or sets the date .NET type (default: 'DateTimeOffset').</summary>
-        public string DateType { get; set; }
+        /// <summary>
+        /// Guid Type (default: "String")
+        /// </summary>
+        public string GuidType { get; set; }
 
         /// <summary>Gets or sets the date time .NET type (default: 'DateTimeOffset').</summary>
         public string DateTimeType { get; set; }
 
-        /// <summary>Gets or sets the time .NET type (default: 'TimeSpan').</summary>
-        public string TimeType { get; set; }
-
-        /// <summary>Gets or sets the time span .NET type (default: 'TimeSpan').</summary>
-        public string TimeSpanType { get; set; }
+        /// <summary>Gets or sets the Duration type (default: 'Duration').</summary>
+        public string DurationType { get; set; }
 
         /// <summary>Gets or sets the generic array .NET type (default: 'ICollection').</summary>
         public string ArrayType { get; set; }
@@ -99,8 +98,11 @@ namespace NJsonSchema.CodeGeneration.Dart
         /// <summary>Gets or sets the Dart class style (default: 'Poco').</summary>
         public DartClassStyle ClassStyle { get; set; }
 
-        /// <summary>Gets or sets the access modifier of generated classes and interfaces (default: 'public').</summary>
-        public string TypeAccessModifier { get; set; }
+        /// <summary>
+        /// IsPrivate Class
+        /// </summary>
+        public bool IsPrivate { get; set; }
+
 
         /// <summary>Gets the access modifier of property setters (default: '').</summary>
         public string PropertySetterAccessModifier { get; set; }

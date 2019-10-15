@@ -10,7 +10,7 @@ using System.ComponentModel;
 
 namespace NJsonSchema.CodeGeneration.Dart
 {
-    /// <summary>The CSharp styles.</summary>
+    /// <summary>The Dart styles.</summary>
     public enum DartClassStyle
     {
         /// <summary>Generates like POCOs (Plain Old C# Objects).</summary>
