@@ -379,7 +379,10 @@
                     "x-abstract": true,
                     "properties": {
                         "title": {
-                            "type": "string"
+                            "anyOf": [
+                                { "type": "string" },
+                                { "$ref": "#/definitions/localizablestring" }
+                            ]
                         },
                         "description": {
                             "anyOf": [
