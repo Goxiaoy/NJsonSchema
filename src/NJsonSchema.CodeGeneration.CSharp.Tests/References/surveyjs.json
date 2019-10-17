@@ -1073,101 +1073,115 @@
                 }
             }
         },
+        "triggerbase": {
+            "$id": "#triggerbase",
+            "type": "object"
+        },
         "visibletrigger": {
             "$id": "#visibletrigger",
             "type": "object",
-            "properties": {
-                "pages": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "questions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
                 }
-            }
+            ]
         },
         "completetrigger": {
             "$id": "#completetrigger",
             "type": "object",
-            "properties": {
-                "pages": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "questions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
                 }
-            }
+            ]
         },
         "setvaluetrigger": {
             "$id": "#setvaluetrigger",
             "type": "object",
-            "properties": {
-                "setToName": {
-                    "type": "string"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
                 },
-                "setValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "isVariable": {
-                    "type": "boolean"
+                {
+                    "properties": {
+                        "setToName": {
+                            "type": "string"
+                        },
+                        "setValue": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        },
+                        "isVariable": {
+                            "type": "boolean"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "skiptrigger": {
             "$id": "#skiptrigger",
             "type": "object",
-            "properties": {
-                "gotoName": {
-                    "type": "string"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
+                },
+                {
+                    "properties": {
+                        "gotoName": {
+                            "type": "string"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "runexpressiontrigger": {
             "$id": "#runexpressiontrigger",
             "type": "object",
-            "properties": {
-                "setToName": {
-                    "type": "string"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
                 },
-                "runExpression": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
+                {
+                    "properties": {
+                        "setToName": {
+                            "type": "string"
+                        },
+                        "runExpression": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "copyvaluetrigger": {
             "$id": "#copyvaluetrigger",
             "type": "object",
-            "properties": {
-                "setToName": {
-                    "type": "string"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/triggerbase"
                 },
-                "fromName": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
+                {
+                    "properties": {
+                        "setToName": {
+                            "type": "string"
+                        },
+                        "fromName": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "checkbox": {
             "$id": "#checkbox",
