@@ -484,7 +484,7 @@
                 {
                     "x-abstract": true,
                     "properties": {
-                        "valueName": {
+                        "name": {
                             "type": "string"
                         },
                         "page": {
